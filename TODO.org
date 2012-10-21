@@ -1,0 +1,1 @@
+* inquiry cart should send the email. D'oh.
