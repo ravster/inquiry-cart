@@ -1,1 +1,2 @@
-* inquiry cart should send the email. D'oh.
+* Change the shortcode to return a form that submits via POST.  It can still be made to look like a link, so thats not a problem.
+  This solves the problem of messing with the URL.

@@ -14,20 +14,22 @@ function rd_ic_shortcode( $attr = array( 'title' => 'This item', ) ){
 	$string_to_return = "";
 
 	// If a product is removed from the cart, do so.
-	if( isset( $_GET['remove-item'] ) ){
-		$name_of_item = $_GET['remove-item'];
+	if( isset( $_REQUEST['remove-item'] ) ){
+		$name_of_item = $_REQUEST['remove-item'];
 		unset( $_SESSION['rd_ic'][$name_of_item] );
-	} elseif ( isset( $_GET['add-item'] ) ) {	// Add item to cart
-		$name_of_item = $_GET['add-item'];
+	} elseif ( isset( $_REQUEST['add-item'] ) ) {	// Add item to cart
+		$name_of_item = $_REQUEST['add-item'];
 		// Add the item to the rd_ic array.
 		$_SESSION['rd_ic'][$name_of_item] = 0;
 	}
 
 	// If the item is in the cart, then put in a link to remove it, else put in a link to add it.
 	if( isset( $_SESSION['rd_ic'][$title] ) ){
-		$string_to_return .= "<p>$title - <a href=\"?remove-item=$title\">remove from cart</a></p>";
+//		$string_to_return .= "<p>$title - <a href=\"?remove-item=$title\">remove from cart</a></p>";
+		$string_to_return .= "<p>$title - <a href=''>remove from cart</a></p>";
 	} else {
-		$string_to_return .= "<p>$title - <a href=\"?add-item=$title\">add to cart</a></p>";
+//		$string_to_return .= "<p>$title - <a href=\"?add-item=$title\">add to cart</a></p>";
+		$string_to_return .= "<p>$title - <a href=''>add to cart</a></p>";
 	}
 
 	return $string_to_return;
