@@ -41,10 +41,11 @@ function rd_ic_cart_process_form(){
 
 function rd_ic_cart_shortcode(){
 // This function returns the html that will be put in place of the shortcode.
+// This returns the form itself.
 
 	// If someone comes to the cart and then removes a product, we should remove the product from the list and then continue with printing the form (With the remaining products).
-	if( isset($_GET['remove-item']) ){
-		$name_of_item = $_GET['remove-item'];
+	if( isset($_POST['remove-item']) ){
+		$name_of_item = $_POST['remove-item'];
 		unset( $_SESSION['rd_ic'][$name_of_item] );
 	}
 
@@ -71,7 +72,10 @@ function rd_ic_cart_shortcode(){
 		$remove_link = "?remove-item=$item_in_cart";
 		
 		$list_of_items .=
-			"<li>$item_in_cart <a href=\"$remove_link\">remove</a></li>";
+			"<li><form action='' method='post' class='rd-ic-shortcode'>
+				$item_in_cart <input type='hidden' name='remove-item' value=\"$item_in_cart\" />
+				<input type='submit' value='remove'/>
+			</form></li>";
 	} unset( $item_in_cart );	// Because the reference to it survives the loop.
 	// At the end of the loop, close the <ul>
 	$list_of_items .= '</ul>';

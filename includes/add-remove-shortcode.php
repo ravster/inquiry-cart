@@ -25,11 +25,17 @@ function rd_ic_shortcode( $attr = array( 'title' => 'This item', ) ){
 
 	// If the item is in the cart, then put in a link to remove it, else put in a link to add it.
 	if( isset( $_SESSION['rd_ic'][$title] ) ){
-//		$string_to_return .= "<p>$title - <a href=\"?remove-item=$title\">remove from cart</a></p>";
-		$string_to_return .= "<p>$title - <a href=''>remove from cart</a></p>";
+		$string_to_return .= "<form action='' method='post' class='rd-ic-shortcode'>
+$title - 
+<input type='hidden' name='remove-item' value=\"$title\" />
+<input type='submit' value='remove from cart' />
+</form>";
 	} else {
-//		$string_to_return .= "<p>$title - <a href=\"?add-item=$title\">add to cart</a></p>";
-		$string_to_return .= "<p>$title - <a href=''>add to cart</a></p>";
+		$string_to_return .= "<form action='' method='post' class='rd-ic-shortcode'>
+$title - 
+<input type='hidden' name='add-item'value=\"$title\" />
+<input type='submit' value='add to cart' />
+</form>";
 	}
 
 	return $string_to_return;

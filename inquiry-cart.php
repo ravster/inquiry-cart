@@ -6,7 +6,7 @@
 	Author URI: ravidesai.com
 	Version: 0
 	Description: Add an inquiry cart to your website that allows end-users to ask questions about posts or products.
-	License: GPLv3 or later
+	License: AGPLv3 or later
 	*/
 /*
 	This plugin has been inspired by the 'quote-cart' plugin by http://churchmediaresource.com/
